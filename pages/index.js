@@ -5,8 +5,8 @@ import SwipeBanner from '../components/SwipeBanner';
 import Banner from '../components/Banner';
 import SwipeLocation from '../components/SwipeLocation';
 import FloatingButton from '../components/FloatingButton';
-
-
+import Detect from './detect';
+import About from './about';
 import main_banner from '../public/MainBanner.png'
 import banner1 from '../public/banner1.png'
 import banner2 from '../public/banner2.png'
@@ -26,15 +26,19 @@ export default function Home() {
 
 
   return (
+    
     <main style={{backgroundColor:'#F6F4F1',width:'100%',height:'100rem'}}>
+    <Detect 
+    mobilePage={
+    <div>
     <Header></Header>
+    
     <div style={{width:'100%',display:'flex',flexDirection:'column',alignItems:'center'}}>
-    <FloatingButton onClick={handleClick} />
+    
       <div style={{margin:'10px',marginTop:'120px'}}>
         <SwipeBanner image = {main_banner} ></SwipeBanner>
       </div>
       
-
 
       <h3 style={{color:'black',width:'100%',height:'20px', margin:'10px', marginLeft:'10%'}}>  💁‍♀️ 오늘의 픽업은 어디로 가볼까요?</h3>
       
@@ -53,10 +57,25 @@ export default function Home() {
       <Link href="/about" style={{margin:'10px'}}>
         <Banner image = {banner3}></Banner>
       </Link>
+      
+    
 
 
 
     </div>
+    </div>
+    } 
+    desktopPage={
+
+    <h1>desktop Page</h1>
+
+
+    }></Detect>
+    
+    
+    
     </main>
   );
 }
+
+
