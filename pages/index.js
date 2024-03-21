@@ -12,14 +12,14 @@ import banner1 from '../public/banner1.png'
 import banner2 from '../public/banner2.png'
 import banner3 from '../public/banner3.png'
 import locationselect from '../public/where_proto.png'
+import Image from "next/image";
+
+import DesktopmainBanner from '../public/Desktop_main_Header.png'
+import DesktopsamplePage from '../public/Desktop_Sample_page.webp'
 
 export default function Home() {
 
-  const handleClick = () => {
-    // 버튼 클릭 시 수행할 작업을 여기에 
-    console.log('Floating Button Clicked');
-  };
-
+ 
 
 
 
@@ -27,14 +27,14 @@ export default function Home() {
 
   return (
     
-    <main style={{backgroundColor:'#F6F4F1',width:'100%',height:'100rem'}}>
+    <main style={{backgroundColor:'#F6F4F1',width:'100%',height:'auto'}}>
     <Detect 
     mobilePage={
     <div>
     <Header></Header>
     
     <div style={{width:'100%',display:'flex',flexDirection:'column',alignItems:'center'}}>
-    
+      <FloatingButton></FloatingButton>
       <div style={{margin:'10px',marginTop:'120px'}}>
         <SwipeBanner image = {main_banner} ></SwipeBanner>
       </div>
@@ -67,9 +67,13 @@ export default function Home() {
     } 
     desktopPage={
 
-    <h1>desktop Page</h1>
-
-
+    
+    <div style={{width:'100%',display:'flex',flexDirection:'column',alignItems:'center'}}>
+      <div style={{ display: 'flex', height: 'auto', width: '100%' }} >
+      <Image src={DesktopmainBanner} alt="MainHeader"  layout="responsive" objectFit="contain"/>
+      </div>
+      <Image src={DesktopsamplePage} alt="MainPage"  layout="responsive" objectFit="contain"/>
+    </div>
     }></Detect>
     
     

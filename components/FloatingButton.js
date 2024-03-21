@@ -1,35 +1,59 @@
 import Image from 'next/image';
 import styled from 'styled-components';
-import React from 'react';
+import React, { useState } from 'react';
+import img from '../public/floatingbutton3.svg';
+import img2 from '../public/floatingbutton2.svg';
 
-import img from '../public/floatingbutton.svg'
+const FloatingButtonWrapper = styled.div`
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  width: 90px;
+  height: 90px;
+  border: none;
+  cursor: pointer;
+  z-index: 9999;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
-// const Button = styled.button`
-//   position: fixed;
-//   bottom: 20px;
-//   right: 20px;
-//   width: 100px;
-//   height: 100px;
-//   border: none;
-//   cursor: pointer;
-//   z-index: 9999; /* 다른 요소보다 위에 표시될 수 있도록 설정 */
-//   background: none; /* 배경을 투명하게 설정 */
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// `;
+const Button = styled.button`
+  background-color: transparent;
+  border: none;
+  width: 80px;
+  height: 80px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 
-const FloatingButton = ({ onClick }) => {
+  // 이미지 전환 효과
+  &.clicked {
+    height: 190px;
+    margin-top: -110px;
+    background-image: url(${img2.src}); // img2를 배경 이미지로 사용
+  }
+
+  &:not(.clicked) {
+    background-image: url(${img.src}); // img를 배경 이미지로 사용
+  }
+`;
+
+const FloatingButton = () => {
+  const [clicked, setClicked] = useState(false);
+
+  const handleClick = () => {
+    console.log('Floating Button Clicked', clicked);
+    setClicked(!clicked);
+  };
+
   return (
-    <div style={{position:'fixed' , bottom:'20px',right:'20px',width: '100px',height: '100px', border: 'none',cursor: 'pointer',zindex: '9999', background: 'none', display: 'flex',alignitems: 'center',justifycontent: 'center'}}>
-        <Button onClick={onClick} >
-            <Image src={img} alt="Floating Button" width={80} height={80} />
-        </Button>
-    </div>
-    
-
-
+    <FloatingButtonWrapper>
+      <Button onClick={handleClick} className={clicked ? 'clicked' : ''} />
+    </FloatingButtonWrapper>
   );
 };
 
 export default FloatingButton;
+
